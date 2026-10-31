@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Locker - Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="page-box">
+        <div class="top">
+            <h2>Digital Locker Management System</h2>
+            <a th:href="@{/logout}">Logout</a>
+        </div>
+
+        <h3 th:text="'Welcome, ' + ${user.name}"></h3>
+        <p>Total Documents: <b th:text="${documentCount}">0</b></p>
+
+        <hr>
+
+        <h3>Upload Document</h3>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label>Select Document</label>
+            <input type="file" name="file" required>
+
+            <label>Category</label>
+            <select name="category" required>
+                <option value="Identity">Identity</option>
+                <option value="Education">Education</option>
+                <option value="Personal">Personal</option>
+                <option value="Certificates">Certificates</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <button type="submit">Upload</button>
+        </form>
+
+        <p class="message" th:if="${message}" th:text="${message}"></p>
+        <p class="error" th:if="${error}" th:text="${error}"></p>
+
+        <hr>
+
+        <h3>My Documents</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Document Name</th>
+                    <th>Category</th>
+                    <th>Upload Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="doc : ${documents}">
+                    <td th:text="${doc.documentName}"></td>
+                    <td th:text="${doc.category}"></td>
+                    <td th:text="${#temporals.format(doc.uploadDate, 'dd-MM-yyyy')}"></td>
+                    <td>
+                        <a th:href="@{/download/{id}(id=${doc.id})}">Download</a>
+                        |
+                        <form class="inline-form" method="post"
+                              th:action="@{/delete/{id}(id=${doc.id})}"
+                              onsubmit="return confirm('Delete this document?');">
+                            <button class="delete-button" type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p th:if="${#lists.isEmpty(documents)}">No documents uploaded yet.</p>
+    </div>
+</body>
+</html>

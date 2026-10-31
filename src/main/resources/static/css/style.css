@@ -1,0 +1,135 @@
+/* Simple CSS for Digital Locker Management System */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    margin: 0;
+    padding: 30px;
+}
+
+.login-box {
+    width: 320px;
+    margin: 70px auto;
+    padding: 25px;
+    border: 2px solid black;
+    background-color: white;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+button {
+    display: block;
+    margin: 18px auto 5px;
+    padding: 7px 22px;
+    border: 1px solid black;
+    background-color: #eeeeee;
+    color: black;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #dddddd;
+}
+
+.link-text {
+    text-align: center;
+    margin-top: 20px;
+}
+
+a {
+    color: blue;
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+.message {
+    color: green;
+    text-align: center;
+}
+
+.page-box {
+    max-width: 950px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+hr {
+    margin: 25px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #eeeeee;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.inline-form button {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    color: blue;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .login-box {
+        width: auto;
+        margin: 30px auto;
+    }
+
+    .top {
+        display: block;
+    }
+
+    table {
+        font-size: 12px;
+    }
+}
